@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IVE 컴백 카운트다운</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IVE 컴백 카운트다운">
+    <meta property="og:description" content="IVE THE 2ND ALBUM <REVIVE+> 'BANG BANG' Release 카운트다운">
+    <meta property="og:image" content="https://i.imgur.com/b7vIYtD.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="IVE 컴백 카운트다운">
+    <meta property="twitter:description" content="IVE THE 2ND ALBUM <REVIVE+> 'BANG BANG' Release 카운트다운">
+    <meta property="twitter:image" content="https://i.imgur.com/b7vIYtD.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+            font-family: 'Orbitron', monospace;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem 5vw;
+            /* 좌우 여백을 5vw로 확대 */
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .title {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+            /* 타이틀 크기 소폭 하향 */
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-shadow: 0 0 20px rgba(255, 45, 85, 0.3);
+            line-height: 1.2;
+        }
+
+
+        .title-sub {
+            display: block;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            /* 더 작게 조정 */
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5em;
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+
+        .target-date {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: clamp(0.7rem, 1.5vw, 1rem);
+            margin-top: 4rem;
+            /* 타이머와의 간격 확보 */
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(0.1rem, 1vw, 1.2rem);
+            flex-wrap: nowrap;
+            width: 100%;
+            max-width: 1400px;
+            /* 더 넓은 폭 허용 */
+        }
+
+
+
+        .time-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 숫자 크기에 맞춰 충분한 너비 확보 */
+            width: clamp(55px, 18vw, 220px);
+            flex-shrink: 1;
+        }
+
+
+
+
+        .time-value {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: clamp(2.5rem, 14vw, 12rem);
+            /* 타이틀 대비 최소 1.5배 이상 확실히 확보 */
+            font-weight: 400;
+            color: #ff2d55;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            text-shadow:
+                0 0 20px rgba(255, 45, 85, 0.9),
+                0 0 50px rgba(255, 45, 85, 0.7),
+                0 0 100px rgba(255, 45, 85, 0.5);
+            line-height: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+
+
+
+
+
+        .time-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: clamp(0.6rem, 1.4vw, 1.1rem);
+            /* 숫자 크기에 맞춰 라벨도 소폭 조정 */
+            font-weight: 700;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .separator {
+            font-size: clamp(1.2rem, 5vw, 3.5rem);
+            color: #ff2d55;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255, 45, 85, 0.6);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.85;
+            }
+        }
+
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .expired {
+            font-size: clamp(2rem, 8vw, 5rem);
+            color: #ff2d55;
+            font-weight: 900;
+            text-shadow:
+                0 0 10px rgba(255, 45, 85, 0.8),
+                0 0 30px rgba(255, 45, 85, 0.6),
+                0 0 60px rgba(255, 45, 85, 0.4);
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        /* Background animation */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 45, 85, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-glow:nth-child(1) {
+            top: -200px;
+            left: -200px;
+        }
+
+        .bg-glow:nth-child(2) {
+            bottom: -200px;
+            right: -200px;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, 30px) scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <h1 class="title">IVE THE 2ND ALBUM &lt;REVIVE+&gt;<span class="title-sub">'BANG BANG' Release</span></h1>
+
+        <div class="timer" id="timer">
+            <div class="time-block">
+                <span class="time-value" id="days">00</span>
+            </div>
+            <span class="separator">:</span>
+            <div class="time-block">
+                <span class="time-value" id="hours">00</span>
+            </div>
+            <span class="separator">:</span>
+            <div class="time-block">
+                <span class="time-value" id="minutes">00</span>
+            </div>
+            <span class="separator">:</span>
+            <div class="time-block">
+                <span class="time-value" id="seconds">00</span>
+            </div>
+            <span class="separator">:</span>
+            <div class="time-block">
+                <span class="time-value" id="milliseconds">00</span>
+            </div>
+        </div>
+
+        <p class="target-date">2026.2.9 18:00</p>
+    </div>
+
+
+    <script>
+        // Target: 2026년 2월 9일 오후 6시 (한국 시간, KST = UTC+9)
+        const targetDate = new Date('2026-02-09T18:00:00+09:00');
+
+        const elements = {
+            days: document.getElementById('days'),
+            hours: document.getElementById('hours'),
+            minutes: document.getElementById('minutes'),
+            seconds: document.getElementById('seconds'),
+            milliseconds: document.getElementById('milliseconds'),
+            timer: document.getElementById('timer')
+        };
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                elements.timer.innerHTML = '<span class="expired">🎉 TIME\'S UP! 🎉</span>';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor((diff % 1000) / 10); // Display 2 digits (00-99)
+
+            elements.days.textContent = String(days).padStart(2, '0');
+            elements.hours.textContent = String(hours).padStart(2, '0');
+            elements.minutes.textContent = String(minutes).padStart(2, '0');
+            elements.seconds.textContent = String(seconds).padStart(2, '0');
+            elements.milliseconds.textContent = String(milliseconds).padStart(2, '0');
+
+            requestAnimationFrame(updateTimer);
+        }
+
+        // Start the timer loop
+        requestAnimationFrame(updateTimer);
+    </script>
+</body>
+
+</html>
