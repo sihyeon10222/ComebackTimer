@@ -10,13 +10,13 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="IVE 컴백 카운트다운">
     <meta property="og:description" content="IVE THE 2ND ALBUM <REVIVE+> 'BANG BANG' Release 카운트다운">
-    <meta property="og:image" content="https://i.imgur.com/b7vIYtD.jpg">
+    <meta property="og:image" content="https://i.imgur.com/EJwoSrh.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="IVE 컴백 카운트다운">
     <meta property="twitter:description" content="IVE THE 2ND ALBUM <REVIVE+> 'BANG BANG' Release 카운트다운">
-    <meta property="twitter:image" content="https://i.imgur.com/b7vIYtD.jpg">
+    <meta property="twitter:image" content="https://i.imgur.com/EJwoSrh.jpg>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -217,6 +217,18 @@
                 transform: translate(30px, 30px) scale(1.1);
             }
         }
+
+        .watermark {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.15em;
+            pointer-events: none;
+            z-index: 100;
+        }
     </style>
 </head>
 
@@ -293,6 +305,8 @@
         // Start the timer loop
         requestAnimationFrame(updateTimer);
     </script>
+    <div class="watermark">워녕102</div>
 </body>
+
 
 </html>
